@@ -27,7 +27,7 @@ export default function Home() {
     return (
       <div className="p-4">
         <p>
-          No documents found. Make sure <code>public/docs.json</code> exists
+          No documents found. Make sure <code>data/docs.json</code> exists
           and contains a JSON array.
         </p>
       </div>

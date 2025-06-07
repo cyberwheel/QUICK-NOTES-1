@@ -23,16 +23,24 @@ export default function Home() {
       });
   }, []);
 
-  const filtered = docs.filter((doc) => {
-    const s = filters.search.toLowerCase();
-    const matchesSearch =
-      doc.title.toLowerCase().includes(s) ||
-      doc.tags.some((tag) => tag.includes(s));
-    const matchesCategory = filters.category
-      ? doc.category === filters.category
-      : true;
-    return matchesSearch && matchesCategory;
-  });
+  const filtered = Array.isArray(docs)
+    ? docs.filter((doc) => {
+        const s = filters.search.toLowerCase();
+
+        const matchesSearch =
+          doc.title?.toLowerCase().includes(s) ||
+          (Array.isArray(doc.tags) &&
+            doc.tags.some((tag) =>
+              tag.toLowerCase().includes(s)
+            ));
+
+        const matchesCategory = filters.category
+          ? doc.category === filters.category
+          : true;
+
+        return matchesSearch && matchesCategory;
+      })
+    : [];
 
   const sortedDocs = [...filtered].sort((a, b) => {
     switch (sortKey) {
@@ -104,7 +112,9 @@ export default function Home() {
 
       {/* Document List */}
       {loading ? (
-        <div className="text-center text-gray-500 mt-12">Loading documents...</div>
+        <div className="text-center text-gray-500 mt-12">
+          Loading documents...
+        </div>
       ) : (
         <DocumentList docs={sortedDocs} />
       )}

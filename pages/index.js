@@ -26,7 +26,10 @@ export default function Home() {
   if (!docs.length) {
     return (
       <div className="p-4">
-        <p>No documents found. Make sure <code>public/docs.json</code> exists and contains a JSON array.</p>
+        <p>
+          No documents found. Make sure <code>public/docs.json</code> exists
+          and contains a JSON array.
+        </p>
       </div>
     );
   }

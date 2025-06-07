@@ -1,0 +1,17 @@
+{
+  "name": "doc-management-app",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@react-pdf-viewer/core": "^3.0.0",
+    "firebase": "^9.0.0",
+    "next": "latest",
+    "pdfjs-dist": "^3.11.174",
+    "react": "latest",
+    "react-dom": "latest"
+  }
+}
